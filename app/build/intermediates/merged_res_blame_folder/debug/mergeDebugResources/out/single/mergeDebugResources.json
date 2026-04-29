@@ -1,0 +1,118 @@
+[
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/xml_file_paths.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-mdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "ch.nthnbch.fossrec.app-debug-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "ch.nthnbch.fossrec.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "ch.nthnbch.fossrec.app-debug-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "ch.nthnbch.fossrec.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/xml_backup_rules.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-xhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-hdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-debug-47:/mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bubu/.gradle/daemon/9.2.1/ch.nthnbch.fossrec.app-main-49:/mipmap-hdpi/ic_launcher_background.png"
+    }
+]

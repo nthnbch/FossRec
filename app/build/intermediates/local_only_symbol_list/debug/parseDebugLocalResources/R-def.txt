@@ -1,0 +1,33 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+mipmap ic_launcher
+mipmap ic_launcher_background
+mipmap ic_launcher_foreground
+mipmap ic_launcher_monochrome
+mipmap ic_launcher_round
+string app_name
+string cancel
+string delete
+string delete_confirmation
+string grant_permission
+string new_name
+string no_recordings
+string pause
+string permission_required
+string play
+string record
+string recording_in_progress
+string recording_service_channel_name
+string recording_service_notification_title
+string rename
+string rename_recording
+string save
+string share
+string stop
+string tap_to_stop
+style Theme.FossRec
+xml backup_rules
+xml data_extraction_rules
+xml file_paths
