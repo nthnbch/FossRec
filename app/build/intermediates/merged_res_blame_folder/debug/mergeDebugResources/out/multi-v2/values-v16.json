@@ -1,10 +1,29 @@
 {
     "logs": [
         {
-            "outputFile": "ch.nthnbch.fossrec.app-mergeDebugResources-45:/values-v16/values-v16.xml",
+            "outputFile": "ch.nthnbch.fossrec.app-mergeDebugResources-52:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/bubu/.gradle/caches/9.2.1/transforms/e2c9d7cfda3399650e2c1fc38c1e2c2a/transformed/core-1.12.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/bubu/.gradle/caches/9.4.1/transforms/39bb6ec368aa9c3ccd415c118dc89f25/transformed/appcompat-1.2.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/Users/bubu/.gradle/caches/9.4.1/transforms/d82158663c963aa583158179ad1f11dc/transformed/core-1.12.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
