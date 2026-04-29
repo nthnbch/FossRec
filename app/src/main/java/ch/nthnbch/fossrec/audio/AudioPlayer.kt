@@ -36,4 +36,12 @@ class AudioPlayer(private val context: Context) {
     fun resume() {
         player?.start()
     }
+
+    fun seekTo(positionMs: Int) {
+        player?.seekTo(positionMs)
+    }
+
+    fun getCurrentPosition(): Int = player?.currentPosition ?: 0
+
+    fun getDuration(): Int = player?.duration ?: 0
 }

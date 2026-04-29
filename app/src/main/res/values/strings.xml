@@ -10,7 +10,10 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="no_recordings">No recordings yet.</string>
-    <string name="recording_in_progress">Recording in progress...</string>
+    <string name="no_recordings_title">No recordings yet</string>
+    <string name="no_recordings_subtitle">Tap the button below to start recording</string>
+    <string name="recording_in_progress">Recording in progress…</string>
+    <string name="recording_paused">Recording paused</string>
     <string name="permission_required">Microphone permission is required to record audio.</string>
     <string name="grant_permission">Grant Permission</string>
     <string name="rename_recording">Rename Recording</string>
@@ -19,4 +22,18 @@
     <string name="recording_service_channel_name">Recording Service</string>
     <string name="recording_service_notification_title">FossRec is recording</string>
     <string name="tap_to_stop">Tap to stop or manage recording</string>
+    <!-- Biometric -->
+    <string name="biometric_prompt_title">Unlock FossRec</string>
+    <string name="biometric_prompt_subtitle">Use your fingerprint or PIN</string>
+    <string name="biometric_description">Authenticate to access your recordings</string>
+    <string name="unlock">Unlock</string>
+    <!-- Search &amp; Sort -->
+    <string name="search_recordings">Search recordings…</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_date_desc">Newest first</string>
+    <string name="sort_date_asc">Oldest first</string>
+    <string name="sort_duration_desc">Longest first</string>
+    <string name="sort_duration_asc">Shortest first</string>
+    <string name="sort_name_asc">Name A→Z</string>
+    <string name="sort_name_desc">Name Z→A</string>
 </resources>
