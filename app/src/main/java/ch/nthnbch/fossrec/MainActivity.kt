@@ -41,6 +41,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ch.nthnbch.fossrec.data.AudioRecording
+import androidx.activity.enableEdgeToEdge
 import ch.nthnbch.fossrec.ui.theme.FossRecTheme
 import java.text.SimpleDateFormat
 import java.util.*
@@ -52,6 +53,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             FossRecTheme {
                 val isAuthenticated by _isAuthenticated

@@ -67,6 +67,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         loadRecordings()
+        // Reload list as soon as a recording finishes
+        viewModelScope.launch {
+            RecordingService.isRecording
+                .drop(1) // skip initial emission
+                .collect { isRecording ->
+                    if (!isRecording) {
+                        delay(300) // let the recorder flush & close the file
+                        loadRecordings()
+                    }
+                }
+        }
     }
 
     fun loadRecordings() {
