@@ -5,7 +5,6 @@ A minimal, private Android audio recorder. No internet. No accounts. No bullshit
 <p align="center">
   <img src="docs/screenshot.png" alt="FossRec screenshot" width="300"/>
   <br/>
-  <em>Screenshot placeholder — replace with actual screenshot</em>
 </p>
 
 ---
