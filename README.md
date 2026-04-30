@@ -1,37 +1,32 @@
 # FossRec
 
-Application Android d'enregistrement audio — simple, locale, et sans bullshit.
+A minimal, private Android audio recorder. No internet. No accounts. No bullshit.
 
-## Pourquoi ?
+<p align="center">
+  <img src="docs/screenshot.png" alt="FossRec screenshot" width="300"/>
+  <br/>
+  <em>Screenshot placeholder — replace with actual screenshot</em>
+</p>
 
-Je cherchais une app d'enregistrement audio pour Android. Toutes celles que j'ai trouvées avaient au moins un de ces problèmes :
+---
 
-- Permissions intrusives sans raison (contacts, localisation, identifiants…)
-- Upload automatique vers des serveurs obscurs
-- Compte obligatoire
-- Telemetry cachée
-- Code source fermé
+## Why
 
-J'ai donc fait la mienne.
+Every audio recorder app I tried had at least one of these problems: unnecessary permissions, silent uploads to unknown servers, mandatory accounts, or hidden telemetry. So I built my own.
 
-## Ce que fait FossRec
+## Features
 
-- Enregistre de l'audio depuis le micro
-- Sauvegarde les fichiers **localement** sur l'appareil
-- Pas d'internet requis
-- Pas de compte, pas de cloud, pas de tracking
+- Record audio from the microphone
+- Files saved **locally** on device — nothing leaves your phone
+- No internet permission
+- No account, no cloud, no tracking
 
-## Ce que FossRec ne fait pas
+## Built With
 
-- Envoyer quoi que ce soit sur un serveur
-- Demander des permissions inutiles
-- Collecter des données
+- Kotlin
+- Android native (no third-party SDKs)
+- Gradle Kotlin DSL
 
-## Stack
+## License
 
-- Android natif (Kotlin)
-- Gradle (Kotlin DSL)
-
-## Licence
-
-À définir — en attendant, tous droits réservés.
+TBD — all rights reserved for now.
