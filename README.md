@@ -27,6 +27,4 @@ Every audio recorder app I tried had at least one of these problems: unnecessary
 - Android native (no third-party SDKs)
 - Gradle Kotlin DSL
 
-## License
-
-TBD — all rights reserved for now.
+Tested on Pixel 7 Pro only.
