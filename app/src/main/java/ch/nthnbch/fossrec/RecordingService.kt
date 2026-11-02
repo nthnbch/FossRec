@@ -11,10 +11,11 @@ import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import ch.nthnbch.fossrec.audio.AudioRecorder
+import ch.nthnbch.fossrec.audio.Mp4Sanitizer
 import ch.nthnbch.fossrec.data.AudioRepository
 import ch.nthnbch.fossrec.data.RecorderSettings
 import ch.nthnbch.fossrec.data.SettingsRepository
-import ch.nthnbch.fossrec.widget.RecordingWidgetProvider
+import ch.nthnbch.fossrec.widget.RecordingWidgets
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -63,6 +64,10 @@ class RecordingService : Service() {
         val isSplit = _isSplit.asStateFlow()
     }
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.wrap(newBase))
+    }
+
     override fun onCreate() {
         super.onCreate()
         audioRecorder = AudioRecorder(this)
@@ -104,7 +109,7 @@ class RecordingService : Service() {
 
         _isRecording.value = true
         _isPaused.value = false
-        RecordingWidgetProvider.refresh(this)
+        RecordingWidgets.refresh(this)
 
         tickJob = scope.launch {
             while (isActive) {
@@ -132,7 +137,7 @@ class RecordingService : Service() {
         _isPaused.value = false
         _recordingDurationSeconds.value = 0L
         currentFile = null
-        RecordingWidgetProvider.refresh(this)
+        RecordingWidgets.refresh(this)
 
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
@@ -143,7 +148,7 @@ class RecordingService : Service() {
         audioRecorder.pause()
         _isPaused.value = true
         updateNotification()
-        RecordingWidgetProvider.refresh(this)
+        RecordingWidgets.refresh(this)
     }
 
     private fun resumeRecording() {
@@ -151,7 +156,7 @@ class RecordingService : Service() {
         audioRecorder.resume()
         _isPaused.value = false
         updateNotification()
-        RecordingWidgetProvider.refresh(this)
+        RecordingWidgets.refresh(this)
     }
 
     // --- Segments (split by size / duration) -------------------------------------
@@ -170,9 +175,13 @@ class RecordingService : Service() {
         val valid = audioRecorder.stop()
         if (!valid || !file.exists() || file.length() == 0L) {
             file.delete()
-        } else if (settings.splitEnabled && !_isSplit.value) {
-            // Never actually split: keep a plain file name.
-            audioRepository.unsplit(file)
+        } else {
+            // Privacy: erase creation timestamps and the Android-version tag from the file.
+            Mp4Sanitizer.sanitize(file)
+            if (settings.splitEnabled && !_isSplit.value) {
+                // Never actually split: keep a plain file name.
+                audioRepository.unsplit(file)
+            }
         }
     }
 

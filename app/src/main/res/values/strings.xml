@@ -50,7 +50,10 @@
 
     <!-- Widget -->
     <string name="widget_idle">Tap to record</string>
-    <string name="widget_description">Start and stop a recording from your home screen</string>
+    <string name="widget_mini_name">FossRec · Mini</string>
+    <string name="widget_large_name">FossRec · Large</string>
+    <string name="widget_mini_description">One button to start and stop a recording</string>
+    <string name="widget_large_description">Start, stop, pause and resume with a live timer</string>
 
     <!-- Disclaimer -->
     <string name="disclaimer_title">Before you start</string>
@@ -80,19 +83,26 @@ FossRec is a tool. You alone are responsible for how you use it. The developer a
     <string name="settings_split_note">If both are enabled, the first limit reached applies.</string>
     <string name="settings_section_security">Security &amp; privacy</string>
     <string name="settings_lock_title">Fingerprint lock</string>
-    <string name="settings_lock_body">FossRec is locked by your fingerprint, face or screen lock whenever one is set up on your phone. It locks again each time you leave the app.</string>
+    <string name="settings_lock_body">Ask for your fingerprint, face or screen lock each time you open FossRec. Off by default. It locks again every time you leave the app.</string>
+    <string name="settings_lock_unavailable">Set up a fingerprint, face unlock or screen lock in your phone settings to use this option.</string>
     <string name="settings_local_title">100 % local</string>
     <string name="settings_local_body">No internet permission, no account, no tracking. Recordings stay in the app\'s private storage on your device.</string>
     <string name="settings_section_appearance">Appearance</string>
-    <string name="settings_dark_title">Automatic dark mode</string>
-    <string name="settings_dark_body">FossRec follows your phone\'s light or dark theme, and uses your wallpaper colors on Android 12 and later.</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_body">Auto follows your phone\'s light or dark mode (and your wallpaper colors on Android 12+).</string>
+    <string name="theme_auto">Auto</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_body">Choose the language of the app, or follow your phone.</string>
+    <string name="language_system">Phone default</string>
     <string name="settings_section_tips">Tips</string>
     <string name="settings_refresh_title">List refresh</string>
     <string name="settings_refresh_body">When you stop a recording, the list refreshes by itself and the new recording appears at the top.</string>
     <string name="settings_swipe_title">Swipe to delete</string>
     <string name="settings_swipe_body">Swipe a recording left or right to delete it. You always get a confirmation first.</string>
     <string name="settings_widget_title">Home-screen widget</string>
-    <string name="settings_widget_body">Add the FossRec widget from your launcher to start and stop a recording in one tap.</string>
+    <string name="settings_widget_body">Add the Mini widget (one button) or the Large widget (timer, pause and resume) from your launcher.</string>
     <string name="settings_section_legal">Legal</string>
     <string name="settings_legal_title">Recording and consent</string>
     <string name="settings_legal_body">Recording people without their consent is illegal in many countries. Tap to read the full notice.</string>

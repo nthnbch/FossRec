@@ -4,5 +4,6 @@
     <color name="widget_text_primary">#0F172A</color>
     <color name="widget_text_secondary">#475569</color>
     <color name="widget_accent">#2563EB</color>
+    <color name="widget_secondary">#475569</color>
     <color name="widget_recording">#DC2626</color>
 </resources>

@@ -1,11 +1,24 @@
 package ch.nthnbch.fossrec.data
 
-/** User-configurable recording options. */
+enum class ThemeMode { AUTO, LIGHT, DARK }
+
+/** [tag] is a BCP-47 language tag; empty means "follow the phone". */
+enum class AppLanguage(val tag: String) {
+    SYSTEM(""),
+    ENGLISH("en"),
+    FRENCH("fr")
+}
+
+/** User-configurable options. */
 data class RecorderSettings(
     val splitBySize: Boolean = false,
     val maxSizeMb: Int = 100,
     val splitByDuration: Boolean = false,
-    val maxDurationMinutes: Int = 15
+    val maxDurationMinutes: Int = 15,
+    /** Ask for fingerprint / face / screen lock when opening the app. Off by default. */
+    val lockEnabled: Boolean = false,
+    val themeMode: ThemeMode = ThemeMode.AUTO,
+    val language: AppLanguage = AppLanguage.SYSTEM
 ) {
     val splitEnabled: Boolean get() = splitBySize || splitByDuration
 

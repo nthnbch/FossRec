@@ -50,7 +50,10 @@
 
     <!-- Widget -->
     <string name="widget_idle">Appuyez pour enregistrer</string>
-    <string name="widget_description">Démarrer et arrêter un enregistrement depuis l\'écran d\'accueil</string>
+    <string name="widget_mini_name">FossRec · Mini</string>
+    <string name="widget_large_name">FossRec · Grand</string>
+    <string name="widget_mini_description">Un bouton pour démarrer et arrêter un enregistrement</string>
+    <string name="widget_large_description">Démarrer, arrêter, mettre en pause et reprendre, avec chrono en direct</string>
 
     <!-- Avertissement -->
     <string name="disclaimer_title">Avant de commencer</string>
@@ -80,19 +83,26 @@ FossRec est un outil. Vous seul êtes responsable de l\'usage que vous en faites
     <string name="settings_split_note">Si les deux sont activés, la première limite atteinte s\'applique.</string>
     <string name="settings_section_security">Sécurité et confidentialité</string>
     <string name="settings_lock_title">Verrouillage par empreinte</string>
-    <string name="settings_lock_body">FossRec est verrouillée par votre empreinte, votre visage ou votre code d\'écran dès qu\'un verrouillage est configuré sur le téléphone. Elle se reverrouille chaque fois que vous quittez l\'application.</string>
+    <string name="settings_lock_body">Demande votre empreinte, votre visage ou votre code d\'écran à chaque ouverture de FossRec. Désactivé par défaut. Se reverrouille chaque fois que vous quittez l\'application.</string>
+    <string name="settings_lock_unavailable">Configurez une empreinte, un déverrouillage facial ou un verrouillage d\'écran dans les réglages du téléphone pour utiliser cette option.</string>
     <string name="settings_local_title">100 % local</string>
     <string name="settings_local_body">Aucune permission Internet, aucun compte, aucun suivi. Les enregistrements restent dans le stockage privé de l\'application, sur votre appareil.</string>
     <string name="settings_section_appearance">Apparence</string>
-    <string name="settings_dark_title">Mode sombre automatique</string>
-    <string name="settings_dark_body">FossRec suit le thème clair ou sombre de votre téléphone et reprend les couleurs de votre fond d\'écran sous Android 12 et plus.</string>
+    <string name="settings_theme_title">Thème</string>
+    <string name="settings_theme_body">Auto suit le mode clair ou sombre du téléphone (et les couleurs du fond d\'écran sous Android 12+).</string>
+    <string name="theme_auto">Auto</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+    <string name="settings_language_title">Langue</string>
+    <string name="settings_language_body">Choisissez la langue de l\'application, ou suivez celle du téléphone.</string>
+    <string name="language_system">Langue du téléphone</string>
     <string name="settings_section_tips">Astuces</string>
     <string name="settings_refresh_title">Rafraîchissement de la liste</string>
     <string name="settings_refresh_body">Quand vous arrêtez un enregistrement, la liste se rafraîchit toute seule et le nouvel enregistrement apparaît en haut.</string>
     <string name="settings_swipe_title">Glisser pour supprimer</string>
     <string name="settings_swipe_body">Glissez un enregistrement vers la gauche ou la droite pour le supprimer. Une confirmation est toujours demandée.</string>
     <string name="settings_widget_title">Widget d\'écran d\'accueil</string>
-    <string name="settings_widget_body">Ajoutez le widget FossRec depuis votre lanceur pour démarrer et arrêter un enregistrement d\'une seule touche.</string>
+    <string name="settings_widget_body">Ajoutez le widget Mini (un bouton) ou le widget Grand (chrono, pause et reprise) depuis votre lanceur.</string>
     <string name="settings_section_legal">Mentions légales</string>
     <string name="settings_legal_title">Enregistrement et consentement</string>
     <string name="settings_legal_body">Enregistrer des personnes sans leur consentement est illégal dans de nombreux pays. Touchez pour lire l\'avis complet.</string>
