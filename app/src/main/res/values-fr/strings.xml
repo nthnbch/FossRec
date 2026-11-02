@@ -108,4 +108,12 @@ FossRec est un outil. Vous seul êtes responsable de l\'usage que vous en faites
     <string name="settings_legal_body">Enregistrer des personnes sans leur consentement est illégal dans de nombreux pays. Touchez pour lire l\'avis complet.</string>
     <string name="settings_section_about">À propos</string>
     <string name="settings_version">Version %1$s</string>
+    <string name="lock_disable_title">Désactiver le verrouillage</string>
+    <string name="lock_disable_subtitle">Confirmez que c\'est bien vous</string>
+    <string name="settings_storage_title">Où sont gardés les fichiers</string>
+    <string name="settings_storage_body">Les enregistrements et les réglages sont stockés uniquement dans le dossier privé de FossRec sur votre téléphone (Android/data/ch.nthnbch.fossrec). Les autres applications ne peuvent pas le lire, rien n\'est sauvegardé ni envoyé, et tout est supprimé si vous désinstallez l\'application. Les fichiers ne sont pas chiffrés : quiconque peut déverrouiller votre téléphone et le brancher à un ordinateur peut y accéder.</string>
+    <string name="settings_metadata_title">Aucune métadonnée</string>
+    <string name="settings_metadata_body">Aucune localisation, aucun nom d\'appareil, aucune date d\'enregistrement dans les fichiers audio : ils sont effacés à la sauvegarde. Seul le nom du fichier (qui contient la date et l\'heure) subsiste.</string>
+    <string name="settings_permissions_title">Autorisations</string>
+    <string name="settings_permissions_body">Micro : nécessaire pour enregistrer. Notifications : uniquement pour afficher l\'enregistrement dans la barre de notification avec les boutons Pause et Arrêter. Si vous les refusez, l\'enregistrement fonctionne exactement pareil depuis l\'application et les widgets. C\'est tout : pas de stockage, de localisation, de contacts ni d\'accès à Internet.</string>
 </resources>

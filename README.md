@@ -1,4 +1,8 @@
-# FossRec
+<p align="center">
+  <img src="docs/logo.png" alt="FossRec logo" width="120"/>
+</p>
+
+<h1 align="center">FossRec</h1>
 
 A minimal, private Android audio recorder. No internet. No accounts. No bullshit.
 
@@ -54,7 +58,9 @@ Some speech-to-text tools reject files above 100 MB, or work better on shorter o
 
 ### Fingerprint lock (optional)
 
-Off by default. Turn it on in **Settings → Security & privacy**: FossRec then asks for your fingerprint, face unlock or screen lock each time you open it, and locks again every time you leave it. The option is only available if your phone has a fingerprint, face unlock or screen lock set up.
+Off by default. Turn it on in **Settings → Security & privacy**: FossRec then asks for your fingerprint, face unlock or screen lock each time you open it, and locks again every time you leave it. Turning it **off** also asks for your fingerprint, so nobody else can remove it. The option is only available if your phone has a fingerprint, face unlock or screen lock set up.
+
+The lock protects the app, not the files themselves (see below).
 
 ### Theme and language
 
@@ -74,9 +80,29 @@ Add them from your launcher's widget picker:
 
 The first time, or if the microphone permission is missing, the record button opens the app instead so you can grant it. Starting a recording from a widget does not unlock the app: if the lock is enabled you still need it to see or play recordings.
 
-### Privacy of the audio files
+## Privacy & security
+
+### What is stored, and where
+
+- **Recordings** are stored in the app's private folder: `Android/data/ch.nthnbch.fossrec/files/`. Other apps cannot read it, and the app has no storage permission. It is removed when you uninstall FossRec — **share or copy a recording before uninstalling** if you want to keep it.
+- **Settings** (split, theme, language, lock) are stored in the app's private preferences. Nothing else is stored: no history, no analytics, no logs.
+- **Nothing leaves the phone.** There is no internet permission, and Android backups are disabled, so nothing is copied to the cloud either.
+- **Files are not encrypted.** The fingerprint lock only protects the app screen. Someone who can unlock your phone and connect it to a computer can still reach the files.
+
+### No metadata in the audio files
 
 FossRec never requests location access and never writes GPS data. Android's recorder does embed a creation date and the Android version inside M4A files; FossRec **erases both** as soon as a recording is saved (the audio itself is not touched). What remains is the file name, which contains the recording date and time (`Recording_YYYYMMDD_HHMMSS`), and the file's modification date on your phone. Rename a file before sharing it if that matters to you.
+
+### Permissions
+
+| Permission | Why | If refused |
+|---|---|---|
+| **Microphone** | Required to record audio | You cannot record |
+| **Notifications** | Show the recording in the notification bar, with Pause / Stop buttons | Recording works exactly the same, controlled from the app and the widgets |
+| Foreground service (microphone) | Keep recording when the screen is off (granted automatically, no prompt) | — |
+| Biometric | Only for the optional lock (granted automatically, no prompt) | — |
+
+No storage, location, contacts or internet permission is requested.
 
 ## Built With
 

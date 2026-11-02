@@ -1,6 +1,11 @@
 package ch.nthnbch.fossrec.ui
 
+import android.content.Context
+import android.content.ContextWrapper
 import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -108,6 +113,9 @@ fun SettingsScreen(
             Section(stringResource(R.string.settings_section_security)) {
                 LockOption(enabled = settings.lockEnabled, onEnabledChange = { v -> onChange { it.copy(lockEnabled = v) } })
                 InfoRow(Icons.Default.WifiOff, R.string.settings_local_title, R.string.settings_local_body)
+                InfoRow(Icons.Default.Storage, R.string.settings_storage_title, R.string.settings_storage_body)
+                InfoRow(Icons.Default.VisibilityOff, R.string.settings_metadata_title, R.string.settings_metadata_body)
+                InfoRow(Icons.Default.Key, R.string.settings_permissions_title, R.string.settings_permissions_body)
             }
 
             Section(stringResource(R.string.settings_section_appearance)) {
@@ -286,11 +294,14 @@ private fun SplitOption(
 @Composable
 private fun LockOption(enabled: Boolean, onEnabledChange: (Boolean) -> Unit) {
     val context = LocalContext.current
+    val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or
+        BiometricManager.Authenticators.DEVICE_CREDENTIAL
     val available = remember {
-        BiometricManager.from(context).canAuthenticate(
-            BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
-        ) == BiometricManager.BIOMETRIC_SUCCESS
+        BiometricManager.from(context).canAuthenticate(authenticators) == BiometricManager.BIOMETRIC_SUCCESS
     }
+    val title = stringResource(R.string.lock_disable_title)
+    val subtitle = stringResource(R.string.lock_disable_subtitle)
+
     Row(horizontalArrangement = Arrangement.spacedBy(Dimens.s4), verticalAlignment = Alignment.CenterVertically) {
         SettingIcon(Icons.Default.Fingerprint)
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(Dimens.s1)) {
@@ -301,8 +312,36 @@ private fun LockOption(enabled: Boolean, onEnabledChange: (Boolean) -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-        Switch(checked = enabled && available, onCheckedChange = onEnabledChange, enabled = available)
+        Switch(
+            checked = enabled && available,
+            enabled = available,
+            onCheckedChange = { wantOn ->
+                val activity = context.findFragmentActivity()
+                if (wantOn || activity == null) {
+                    onEnabledChange(wantOn)
+                } else {
+                    // Turning the lock off requires proving it is you.
+                    val callback = object : BiometricPrompt.AuthenticationCallback() {
+                        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                            onEnabledChange(false)
+                        }
+                    }
+                    val info = BiometricPrompt.PromptInfo.Builder()
+                        .setTitle(title)
+                        .setSubtitle(subtitle)
+                        .setAllowedAuthenticators(authenticators)
+                        .build()
+                    BiometricPrompt(activity, ContextCompat.getMainExecutor(activity), callback).authenticate(info)
+                }
+            }
+        )
     }
+}
+
+private tailrec fun Context.findFragmentActivity(): FragmentActivity? = when (this) {
+    is FragmentActivity -> this
+    is ContextWrapper -> baseContext.findFragmentActivity()
+    else -> null
 }
 
 /** A setting with one choice among a few, shown as chips. */
