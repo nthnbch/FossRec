@@ -6,10 +6,13 @@
 
 A minimal, private Android audio recorder. No internet. No accounts. No bullshit.
 
-<p align="center">
-  <img src="docs/screenshot.png" alt="FossRec screenshot" width="300"/>
-  <br/>
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><img src="docs/lightmode.png" alt="FossRec, light mode" width="250"/><br/><sub>Light mode</sub></td>
+    <td align="center"><img src="docs/darkmode.png" alt="FossRec, dark mode" width="250"/><br/><sub>Dark mode</sub></td>
+    <td align="center"><img src="docs/widget.png" alt="FossRec widgets: mini and large" width="250"/><br/><sub>Mini and large widgets</sub></td>
+  </tr>
+</table>
 
 ---
 
