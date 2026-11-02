@@ -6,6 +6,10 @@ import androidx.lifecycle.viewModelScope
 import ch.nthnbch.fossrec.audio.AudioPlayer
 import ch.nthnbch.fossrec.data.AudioRecording
 import ch.nthnbch.fossrec.data.AudioRepository
+import ch.nthnbch.fossrec.data.ListRow
+import ch.nthnbch.fossrec.data.RecorderSettings
+import ch.nthnbch.fossrec.data.SettingsRepository
+import ch.nthnbch.fossrec.data.buildRows
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,6 +24,13 @@ enum class SortMode {
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = AudioRepository(application)
+    private val settingsRepository = SettingsRepository(application)
+
+    val settings: StateFlow<RecorderSettings> = settingsRepository.settings
+
+    fun updateSettings(transform: (RecorderSettings) -> RecorderSettings) =
+        settingsRepository.update(transform)
+
     private val audioPlayer = AudioPlayer(application).apply {
         onCompletionListener = {
             _playingRecording.value = null
@@ -36,7 +47,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _sortMode = MutableStateFlow(SortMode.DATE_DESC)
     val sortMode = _sortMode.asStateFlow()
 
-    val filteredAndSortedRecordings: StateFlow<List<AudioRecording>> = combine(
+    /** Recordings after search and sort, with the parts of a split session gathered under one header. */
+    val rows: StateFlow<List<ListRow>> = combine(
         _recordings, _searchQuery, _sortMode
     ) { recordings, query, sort ->
         recordings
@@ -51,6 +63,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     SortMode.NAME_DESC -> filtered.sortedByDescending { it.name.lowercase() }
                 }
             }
+            .let(::buildRows)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
@@ -67,7 +80,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         loadRecordings()
-        // Reload list as soon as a recording finishes
+        // Refresh the list when a recording starts a new part or finishes, so new files show up at once.
         viewModelScope.launch {
             RecordingService.isRecording
                 .drop(1) // skip initial emission
@@ -76,6 +89,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         delay(300) // let the recorder flush & close the file
                         loadRecordings()
                     }
+                }
+        }
+        viewModelScope.launch {
+            RecordingService.currentPart
+                .drop(1)
+                .collect {
+                    delay(300)
+                    loadRecordings()
                 }
         }
     }
@@ -141,6 +162,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             if (success) {
                 loadRecordings()
             }
+        }
+    }
+
+    fun deleteRecordings(recordings: List<AudioRecording>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if (_playingRecording.value in recordings) {
+                withContext(Dispatchers.Main) { stopPlaying() }
+            }
+            recordings.forEach { repository.deleteRecording(it.file) }
+            loadRecordings()
         }
     }
 

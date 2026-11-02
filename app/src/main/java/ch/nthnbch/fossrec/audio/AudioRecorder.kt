@@ -5,62 +5,67 @@ import android.media.MediaRecorder
 import android.os.Build
 import java.io.File
 
+/** Records the microphone to an M4A (MPEG-4 / AAC) file. */
 class AudioRecorder(private val context: Context) {
 
     private var recorder: MediaRecorder? = null
 
-    fun start(outputFile: File) {
-        recorder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    /** Returns false (and leaves no half-written file) if the recorder could not start. */
+    fun start(outputFile: File): Boolean {
+        val r = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             MediaRecorder(context)
         } else {
             @Suppress("DEPRECATION")
             MediaRecorder()
-        }.apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            setAudioEncodingBitRate(192000) // 192 kbps for high quality
-            setAudioSamplingRate(44100) // 44.1 kHz CD quality
-            setOutputFile(outputFile.absolutePath)
-
-            try {
+        }
+        return try {
+            r.apply {
+                setAudioSource(MediaRecorder.AudioSource.MIC)
+                setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+                setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                setAudioEncodingBitRate(BITRATE)
+                setAudioSamplingRate(SAMPLE_RATE)
+                setOutputFile(outputFile.absolutePath)
                 prepare()
                 start()
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
+            recorder = r
+            true
+        } catch (e: Exception) {
+            runCatching { r.release() }
+            outputFile.delete()
+            false
         }
     }
 
     fun pause() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            try {
-                recorder?.pause()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        runCatching { recorder?.pause() }
     }
 
     fun resume() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            try {
-                recorder?.resume()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        runCatching { recorder?.resume() }
+    }
+
+    /** Returns true if the file was finalised correctly (it may be invalid for a near-instant recording). */
+    fun stop(): Boolean {
+        val r = recorder ?: return false
+        recorder = null
+        return try {
+            r.stop()
+            true
+        } catch (e: RuntimeException) {
+            false
+        } finally {
+            runCatching { r.release() }
         }
     }
 
-    fun stop() {
-        try {
-            recorder?.stop()
-            recorder?.reset()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            recorder?.release()
-            recorder = null
-        }
+    companion object {
+        const val BITRATE = 192_000 // bits per second
+        const val SAMPLE_RATE = 44_100
+
+        /** Rough audio length that fits in [megabytes] MB at the configured bitrate. */
+        fun minutesForMegabytes(megabytes: Int): Int =
+            ((megabytes * 1_000_000L * 8) / BITRATE / 60).toInt()
     }
 }

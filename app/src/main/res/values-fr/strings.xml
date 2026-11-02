@@ -36,4 +36,66 @@
     <string name="sort_duration_asc">Durée croissante</string>
     <string name="sort_name_asc">Nom A→Z</string>
     <string name="sort_name_desc">Nom Z→A</string>
+
+    <!-- Enregistrement / notification -->
+    <string name="resume">Reprendre</string>
+    <string name="notification_state_recording">Enregistrement</string>
+    <string name="notification_state_paused">En pause</string>
+    <string name="recording_failed">Impossible de démarrer l\'enregistrement. Le micro est-il utilisé ?</string>
+    <string name="part_label">Partie %1$d</string>
+    <string name="group_summary">%1$d parties · %2$s · %3$s</string>
+    <string name="group_delete_confirmation">Supprimer les %1$d parties de cet enregistrement ?</string>
+    <string name="delete_all">Tout supprimer</string>
+    <string name="linked_parts">Enregistrements liés</string>
+
+    <!-- Widget -->
+    <string name="widget_idle">Appuyez pour enregistrer</string>
+    <string name="widget_description">Démarrer et arrêter un enregistrement depuis l\'écran d\'accueil</string>
+
+    <!-- Avertissement -->
+    <string name="disclaimer_title">Avant de commencer</string>
+    <string name="disclaimer_heading">Enregistrer des personnes nécessite leur consentement</string>
+    <string name="disclaimer_body">Dans de nombreux pays, il est illégal d\'enregistrer une conversation sans le consentement des personnes enregistrées. Les lois varient d\'un endroit à l\'autre, et c\'est à vous de connaître et de respecter celles qui s\'appliquent à vous.
+
+FossRec est un outil. Vous seul êtes responsable de l\'usage que vous en faites. Le développeur décline toute responsabilité en cas de mauvais usage ou de conséquence juridique liée aux enregistrements réalisés avec cette application.</string>
+    <string name="disclaimer_checkbox">J\'ai lu et compris. J\'enregistrerai uniquement avec le consentement des personnes concernées.</string>
+    <string name="disclaimer_continue">Continuer</string>
+    <string name="disclaimer_quit">Quitter</string>
+    <string name="close">Fermer</string>
+
+    <!-- Réglages -->
+    <string name="settings">Réglages</string>
+    <string name="back">Retour</string>
+    <string name="settings_section_recording">Enregistrement</string>
+    <string name="settings_format_title">Format</string>
+    <string name="settings_format_body">M4A (AAC, 192 kb/s, 44,1 kHz). Lisible partout et compatible avec la plupart des outils de transcription.</string>
+    <string name="settings_split_intro">Les longs enregistrements peuvent être découpés automatiquement en plusieurs fichiers. L\'enregistrement ne s\'arrête jamais : la partie suivante démarre aussitôt, et les parties restent liées dans votre liste.</string>
+    <string name="settings_split_size_title">Découper selon la taille</string>
+    <string name="settings_split_size_body">Démarre une nouvelle partie quand un fichier atteint cette taille. Utile pour les outils limités à 100 Mo.</string>
+    <string name="settings_split_duration_title">Découper selon la durée</string>
+    <string name="settings_split_duration_body">Démarre une nouvelle partie à intervalle régulier.</string>
+    <string name="settings_unit_mb">%1$d Mo</string>
+    <string name="settings_unit_min">%1$d min</string>
+    <string name="settings_size_estimate">Environ %1$d min d\'audio par partie</string>
+    <string name="settings_split_note">Si les deux sont activés, la première limite atteinte s\'applique.</string>
+    <string name="settings_section_security">Sécurité et confidentialité</string>
+    <string name="settings_lock_title">Verrouillage par empreinte</string>
+    <string name="settings_lock_body">FossRec est verrouillée par votre empreinte, votre visage ou votre code d\'écran dès qu\'un verrouillage est configuré sur le téléphone. Elle se reverrouille chaque fois que vous quittez l\'application.</string>
+    <string name="settings_local_title">100 % local</string>
+    <string name="settings_local_body">Aucune permission Internet, aucun compte, aucun suivi. Les enregistrements restent dans le stockage privé de l\'application, sur votre appareil.</string>
+    <string name="settings_section_appearance">Apparence</string>
+    <string name="settings_dark_title">Mode sombre automatique</string>
+    <string name="settings_dark_body">FossRec suit le thème clair ou sombre de votre téléphone et reprend les couleurs de votre fond d\'écran sous Android 12 et plus.</string>
+    <string name="settings_section_tips">Astuces</string>
+    <string name="settings_refresh_title">Rafraîchissement de la liste</string>
+    <string name="settings_refresh_body">Quand vous arrêtez un enregistrement, la liste se rafraîchit toute seule et le nouvel enregistrement apparaît en haut.</string>
+    <string name="settings_swipe_title">Glisser pour supprimer</string>
+    <string name="settings_swipe_body">Glissez un enregistrement vers la gauche ou la droite pour le supprimer. Une confirmation est toujours demandée.</string>
+    <string name="settings_widget_title">Widget d\'écran d\'accueil</string>
+    <string name="settings_widget_body">Ajoutez le widget FossRec depuis votre lanceur pour démarrer et arrêter un enregistrement d\'une seule touche.</string>
+    <string name="settings_section_legal">Mentions légales</string>
+    <string name="settings_legal_title">Enregistrement et consentement</string>
+    <string name="settings_legal_body">Enregistrer des personnes sans leur consentement est illégal dans de nombreux pays. Touchez pour lire l\'avis complet.</string>
+    <string name="settings_section_about">À propos</string>
+    <string name="settings_version">Version %1$s</string>
 </resources>

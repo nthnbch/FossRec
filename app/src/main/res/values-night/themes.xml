@@ -1,0 +1,4 @@
+<resources>
+    <!-- Dark window background while the Compose UI loads, so dark mode never flashes white. -->
+    <style name="Theme.FossRec" parent="android:Theme.Material.NoActionBar" />
+</resources>
