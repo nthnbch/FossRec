@@ -56,7 +56,7 @@ private fun Modifier.groupRail(fromTop: Boolean, toBottom: Boolean, dot: Boolean
 // === Group header ===============================================================
 
 @Composable
-fun GroupHeaderItem(header: ListRow.GroupHeader, onDeleteAll: () -> Unit) {
+fun GroupHeaderItem(header: ListRow.GroupHeader, onDeleteAll: () -> Unit, onShareAll: () -> Unit) {
     val context = LocalContext.current
     val summary = stringResource(
         R.string.group_summary,
@@ -94,6 +94,14 @@ fun GroupHeaderItem(header: ListRow.GroupHeader, onDeleteAll: () -> Unit) {
                 text = summary,
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        IconButton(onClick = onShareAll, modifier = Modifier.size(Dimens.iconTarget)) {
+            Icon(
+                Icons.Default.Share,
+                contentDescription = stringResource(R.string.share_all),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(Dimens.icon)
             )
         }
         IconButton(onClick = onDeleteAll, modifier = Modifier.size(Dimens.iconTarget)) {

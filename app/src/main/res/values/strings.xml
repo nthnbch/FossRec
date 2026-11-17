@@ -7,6 +7,7 @@
     <string name="delete">Delete</string>
     <string name="rename">Rename</string>
     <string name="share">Share</string>
+    <string name="share_all">Share all parts</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="no_recordings">No recordings yet.</string>

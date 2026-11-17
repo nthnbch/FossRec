@@ -225,7 +225,8 @@ fun MainScreen(viewModel: MainViewModel = viewModel()) {
                         when (row) {
                             is ListRow.GroupHeader -> GroupHeaderItem(
                                 header = row,
-                                onDeleteAll = { recordingsToDelete = row.parts }
+                                onDeleteAll = { recordingsToDelete = row.parts },
+                                onShareAll = { shareRecordings(context, row.parts) }
                             )
                             is ListRow.Item -> {
                                 val rec = row.recording
@@ -439,4 +440,16 @@ private fun shareRecording(context: Context, recording: AudioRecording) {
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share)))
+}
+
+private fun shareRecordings(context: Context, recordings: List<AudioRecording>) {
+    val uris = ArrayList(recordings.map {
+        FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", it.file)
+    })
+    val shareIntent = Intent(Intent.ACTION_SEND_MULTIPLE).apply {
+        type = "audio/mp4"
+        putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    }
+    context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_all)))
 }
