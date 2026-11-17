@@ -87,7 +87,7 @@ FossRec is a tool. You alone are responsible for how you use it. The developer a
     <string name="settings_lock_body">Ask for your fingerprint, face or screen lock each time you open FossRec. Off by default. It locks again every time you leave the app.</string>
     <string name="settings_lock_unavailable">Set up a fingerprint, face unlock or screen lock in your phone settings to use this option.</string>
     <string name="settings_local_title">100 % local</string>
-    <string name="settings_local_body">No internet permission, no account, no tracking. Recordings stay in the app\'s private storage on your device.</string>
+    <string name="settings_local_body">No account, no tracking, and internet is only used by the optional update check (off by default). Recordings stay in the app\'s private storage on your device.</string>
     <string name="settings_section_appearance">Appearance</string>
     <string name="settings_theme_title">Theme</string>
     <string name="settings_theme_body">Auto follows your phone\'s light or dark mode (and your wallpaper colors on Android 12+).</string>
@@ -116,5 +116,14 @@ FossRec is a tool. You alone are responsible for how you use it. The developer a
     <string name="settings_metadata_title">No metadata</string>
     <string name="settings_metadata_body">No location, no device name, no recording date inside the audio files: they are erased when a recording is saved. Only the file name (which contains the date and time) remains.</string>
     <string name="settings_permissions_title">Permissions</string>
-    <string name="settings_permissions_body">Microphone: required to record. Notifications: only to show the recording in the notification bar with Pause and Stop buttons. If you refuse them, recording works exactly the same from the app and the widgets. That is all: no storage, location, contacts or internet access.</string>
+    <string name="settings_permissions_body">Microphone: required to record. Notifications: only to show the recording in the notification bar with Pause and Stop buttons. If you refuse them, recording works exactly the same from the app and the widgets. That is all: no storage, location or contacts. Internet is requested only for the optional update check.</string>
+    <string name="settings_section_updates">Updates</string>
+    <string name="settings_update_title">Check for updates</string>
+    <string name="settings_update_body">Asks GitHub whether a newer release exists, each time you open FossRec. Off by default: this is the only thing in FossRec that uses the internet. Nothing is downloaded or installed, and nothing about you or your recordings is sent.</string>
+    <string name="update_check">Check now</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_uptodate">Up to date</string>
+    <string name="update_version_available">Version %1$s available</string>
+    <string name="update_open">View release</string>
+    <string name="update_error">Could not reach GitHub</string>
 </resources>

@@ -9,6 +9,7 @@ import ch.nthnbch.fossrec.data.AudioRepository
 import ch.nthnbch.fossrec.data.ListRow
 import ch.nthnbch.fossrec.data.RecorderSettings
 import ch.nthnbch.fossrec.data.SettingsRepository
+import ch.nthnbch.fossrec.data.UpdateChecker
 import ch.nthnbch.fossrec.data.buildRows
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -30,6 +31,47 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateSettings(transform: (RecorderSettings) -> RecorderSettings) =
         settingsRepository.update(transform)
+
+    private val _update = MutableStateFlow<UpdateChecker.Release?>(null)
+    /** A newer release than the installed one, or null (also when checks are off). */
+    val update: StateFlow<UpdateChecker.Release?> = _update.asStateFlow()
+
+    /** Result of a manual check: null = not run, true = found a newer one, false = none / unreachable. */
+    private val _checking = MutableStateFlow(false)
+    val checking: StateFlow<Boolean> = _checking.asStateFlow()
+    private val _checkResult = MutableStateFlow<UpdateResult?>(null)
+    val checkResult: StateFlow<UpdateResult?> = _checkResult.asStateFlow()
+
+    enum class UpdateResult { UP_TO_DATE, AVAILABLE, FAILED }
+
+    private val currentVersion: String = runCatching {
+        application.packageManager.getPackageInfo(application.packageName, 0).versionName
+    }.getOrNull().orEmpty()
+
+    fun checkForUpdate() {
+        if (_checking.value) return
+        viewModelScope.launch {
+            _checking.value = true
+            val release = UpdateChecker.latest()
+            _checking.value = false
+            if (release == null) {
+                _checkResult.value = UpdateResult.FAILED
+            } else if (UpdateChecker.isNewer(release.version, currentVersion)) {
+                _update.value = release
+                _checkResult.value = UpdateResult.AVAILABLE
+            } else {
+                _update.value = null
+                _checkResult.value = UpdateResult.UP_TO_DATE
+            }
+        }
+    }
+
+    fun dismissUpdate() { _update.value = null }
+
+    init {
+        // Automatic check at launch, only when the user opted in.
+        if (settingsRepository.load().updateCheckEnabled) checkForUpdate()
+    }
 
     private val audioPlayer = AudioPlayer(application).apply {
         onCompletionListener = {

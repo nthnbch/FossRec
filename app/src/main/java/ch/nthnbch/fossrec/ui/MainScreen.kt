@@ -52,6 +52,9 @@ fun MainScreen(viewModel: MainViewModel = viewModel()) {
     val isPaused by RecordingService.isPaused.collectAsStateWithLifecycle()
     val recordingDuration by RecordingService.recordingDurationSeconds.collectAsStateWithLifecycle()
     val currentPart by RecordingService.currentPart.collectAsStateWithLifecycle()
+    val update by viewModel.update.collectAsStateWithLifecycle()
+    val checking by viewModel.checking.collectAsStateWithLifecycle()
+    val checkResult by viewModel.checkResult.collectAsStateWithLifecycle()
     val isSplit by RecordingService.isSplit.collectAsStateWithLifecycle()
 
     var showSettings by rememberSaveable { mutableStateOf(false) }
@@ -71,6 +74,10 @@ fun MainScreen(viewModel: MainViewModel = viewModel()) {
             settings = settings,
             versionName = versionName,
             onChange = viewModel::updateSettings,
+            update = update,
+            checking = checking,
+            checkResult = checkResult,
+            onCheckUpdate = viewModel::checkForUpdate,
             onBack = { showSettings = false }
         )
         return
@@ -209,6 +216,14 @@ fun MainScreen(viewModel: MainViewModel = viewModel()) {
                 singleLine = true,
                 shape = CircleShape
             )
+
+            update?.let { release ->
+                UpdateBanner(
+                    version = release.version,
+                    onOpen = { openUrl(context, release.pageUrl) },
+                    onDismiss = viewModel::dismissUpdate
+                )
+            }
 
             if (showPermissionRationale) {
                 PermissionRationale { showPermissionRationale = false }
@@ -452,4 +467,32 @@ private fun shareRecordings(context: Context, recordings: List<AudioRecording>) 
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_all)))
+}
+
+@Composable
+private fun UpdateBanner(version: String, onOpen: () -> Unit, onDismiss: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = Dimens.s5, vertical = Dimens.s2),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+    ) {
+        Row(
+            modifier = Modifier.padding(start = Dimens.s5, top = Dimens.s2, bottom = Dimens.s2, end = Dimens.s2),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                stringResource(R.string.update_version_available, version),
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.weight(1f)
+            )
+            TextButton(onClick = onOpen) { Text(stringResource(R.string.update_open)) }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) }
+        }
+    }
+}
+
+internal fun openUrl(context: Context, url: String) {
+    runCatching {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    }
 }

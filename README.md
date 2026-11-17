@@ -4,7 +4,7 @@
 
 <h1 align="center">FossRec</h1>
 
-A minimal, private Android audio recorder. No internet. No accounts. No bullshit.
+A minimal, private Android audio recorder. No internet use by default. No accounts. No bullshit.
 
 <table align="center">
   <tr>
@@ -33,7 +33,7 @@ Every audio recorder app I tried had at least one of these problems: unnecessary
 
 - Record audio from the microphone, saved as **M4A** (AAC, 192 kbps, 44.1 kHz)
 - Files saved **locally** on device — nothing leaves your phone
-- No internet permission, no account, no cloud, no tracking
+- No account, no cloud, no tracking. Internet is only used by the optional, off-by-default update check
 - Pause / resume, rename, share, search and sort
 - **Automatic split** of long recordings (by file size and/or duration)
 - Optional **fingerprint lock**
@@ -89,8 +89,12 @@ The first time, or if the microphone permission is missing, the record button op
 
 - **Recordings** are stored in the app's private folder: `Android/data/ch.nthnbch.fossrec/files/`. Other apps cannot read it, and the app has no storage permission. It is removed when you uninstall FossRec — **share or copy a recording before uninstalling** if you want to keep it.
 - **Settings** (split, theme, language, lock) are stored in the app's private preferences. Nothing else is stored: no history, no analytics, no logs.
-- **Nothing leaves the phone.** There is no internet permission, and Android backups are disabled, so nothing is copied to the cloud either.
+- **Nothing leaves the phone.** The only network access is the optional update check (below, off by default), and Android backups are disabled, so nothing is copied to the cloud either.
 - **Files are not encrypted.** The fingerprint lock only protects the app screen. Someone who can unlock your phone and connect it to a computer can still reach the files.
+
+### Update check (optional)
+
+Off by default. Turn it on in **Settings → Updates**: FossRec then asks `api.github.com` for the latest release each time you open it, and shows a banner if a newer version exists. The banner opens the release page in your browser; FossRec never downloads or installs anything itself. The request contains no identifier and nothing about your recordings.
 
 ### No metadata in the audio files
 
@@ -103,9 +107,10 @@ FossRec never requests location access and never writes GPS data. Android's reco
 | **Microphone** | Required to record audio | You cannot record |
 | **Notifications** | Show the recording in the notification bar, with Pause / Stop buttons | Recording works exactly the same, controlled from the app and the widgets |
 | Foreground service (microphone) | Keep recording when the screen is off (granted automatically, no prompt) | — |
+| Internet | Only for the optional update check: one plain request to the GitHub API to read the latest release number. Off by default; nothing is downloaded or installed, nothing about you is sent | Everything else works the same |
 | Biometric | Only for the optional lock (granted automatically, no prompt) | — |
 
-No storage, location, contacts or internet permission is requested.
+No storage, location or contacts permission is requested.
 
 ## Built With
 

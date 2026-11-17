@@ -17,6 +17,8 @@ data class RecorderSettings(
     val maxDurationMinutes: Int = 15,
     /** Ask for fingerprint / face / screen lock when opening the app. Off by default. */
     val lockEnabled: Boolean = false,
+    /** Ask GitHub for a newer release. Off by default: it is the only thing that uses the internet. */
+    val updateCheckEnabled: Boolean = false,
     val themeMode: ThemeMode = ThemeMode.AUTO,
     val language: AppLanguage = AppLanguage.SYSTEM
 ) {

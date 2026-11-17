@@ -28,6 +28,7 @@ class SettingsRepository(context: Context) {
             splitByDuration = prefs.getBoolean(KEY_SPLIT_DURATION, d.splitByDuration),
             maxDurationMinutes = prefs.getInt(KEY_MAX_DURATION_MIN, d.maxDurationMinutes),
             lockEnabled = prefs.getBoolean(KEY_LOCK, d.lockEnabled),
+            updateCheckEnabled = prefs.getBoolean(KEY_UPDATE_CHECK, d.updateCheckEnabled),
             themeMode = enumOrDefault(prefs.getString(KEY_THEME, null), d.themeMode),
             language = enumOrDefault(prefs.getString(KEY_LANGUAGE, null), d.language)
         )
@@ -41,6 +42,7 @@ class SettingsRepository(context: Context) {
             .putBoolean(KEY_SPLIT_DURATION, new.splitByDuration)
             .putInt(KEY_MAX_DURATION_MIN, new.maxDurationMinutes)
             .putBoolean(KEY_LOCK, new.lockEnabled)
+            .putBoolean(KEY_UPDATE_CHECK, new.updateCheckEnabled)
             .putString(KEY_THEME, new.themeMode.name)
             .putString(KEY_LANGUAGE, new.language.name)
             .apply()
@@ -66,6 +68,7 @@ class SettingsRepository(context: Context) {
         const val KEY_SPLIT_DURATION = "split_by_duration"
         const val KEY_MAX_DURATION_MIN = "max_duration_min"
         const val KEY_LOCK = "lock_enabled"
+        const val KEY_UPDATE_CHECK = "update_check"
         const val KEY_THEME = "theme_mode"
         const val KEY_LANGUAGE = "language"
         const val KEY_DISCLAIMER = "disclaimer_accepted"

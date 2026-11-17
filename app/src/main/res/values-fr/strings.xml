@@ -87,7 +87,7 @@ FossRec est un outil. Vous seul êtes responsable de l\'usage que vous en faites
     <string name="settings_lock_body">Demande votre empreinte, votre visage ou votre code d\'écran à chaque ouverture de FossRec. Désactivé par défaut. Se reverrouille chaque fois que vous quittez l\'application.</string>
     <string name="settings_lock_unavailable">Configurez une empreinte, un déverrouillage facial ou un verrouillage d\'écran dans les réglages du téléphone pour utiliser cette option.</string>
     <string name="settings_local_title">100 % local</string>
-    <string name="settings_local_body">Aucune permission Internet, aucun compte, aucun suivi. Les enregistrements restent dans le stockage privé de l\'application, sur votre appareil.</string>
+    <string name="settings_local_body">Aucun compte, aucun suivi, et Internet n\'est utilisé que par la recherche de mises à jour optionnelle (désactivée par défaut). Les enregistrements restent dans le stockage privé de l\'application, sur votre appareil.</string>
     <string name="settings_section_appearance">Apparence</string>
     <string name="settings_theme_title">Thème</string>
     <string name="settings_theme_body">Auto suit le mode clair ou sombre du téléphone (et les couleurs du fond d\'écran sous Android 12+).</string>
@@ -116,5 +116,14 @@ FossRec est un outil. Vous seul êtes responsable de l\'usage que vous en faites
     <string name="settings_metadata_title">Aucune métadonnée</string>
     <string name="settings_metadata_body">Aucune localisation, aucun nom d\'appareil, aucune date d\'enregistrement dans les fichiers audio : ils sont effacés à la sauvegarde. Seul le nom du fichier (qui contient la date et l\'heure) subsiste.</string>
     <string name="settings_permissions_title">Autorisations</string>
-    <string name="settings_permissions_body">Micro : nécessaire pour enregistrer. Notifications : uniquement pour afficher l\'enregistrement dans la barre de notification avec les boutons Pause et Arrêter. Si vous les refusez, l\'enregistrement fonctionne exactement pareil depuis l\'application et les widgets. C\'est tout : pas de stockage, de localisation, de contacts ni d\'accès à Internet.</string>
+    <string name="settings_permissions_body">Micro : nécessaire pour enregistrer. Notifications : uniquement pour afficher l\'enregistrement dans la barre de notification avec les boutons Pause et Arrêter. Si vous les refusez, l\'enregistrement fonctionne exactement pareil depuis l\'application et les widgets. C\'est tout : pas de stockage, de localisation ni de contacts. Internet n\'est demandé que pour la recherche de mises à jour optionnelle.</string>
+    <string name="settings_section_updates">Mises à jour</string>
+    <string name="settings_update_title">Rechercher les mises à jour</string>
+    <string name="settings_update_body">Demande à GitHub s\'il existe une version plus récente, à chaque ouverture de FossRec. Désactivé par défaut : c\'est la seule chose dans FossRec qui utilise internet. Rien n\'est téléchargé ni installé, et rien sur vous ou vos enregistrements n\'est envoyé.</string>
+    <string name="update_check">Vérifier maintenant</string>
+    <string name="update_checking">Vérification…</string>
+    <string name="update_uptodate">À jour</string>
+    <string name="update_version_available">Version %1$s disponible</string>
+    <string name="update_open">Voir la version</string>
+    <string name="update_error">Impossible de joindre GitHub</string>
 </resources>

@@ -24,7 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import ch.nthnbch.fossrec.MainViewModel
 import ch.nthnbch.fossrec.R
+import ch.nthnbch.fossrec.data.UpdateChecker
 import ch.nthnbch.fossrec.audio.AudioRecorder
 import ch.nthnbch.fossrec.data.AppLanguage
 import ch.nthnbch.fossrec.data.RecorderSettings
@@ -37,6 +39,10 @@ fun SettingsScreen(
     settings: RecorderSettings,
     versionName: String,
     onChange: ((RecorderSettings) -> RecorderSettings) -> Unit,
+    update: UpdateChecker.Release?,
+    checking: Boolean,
+    checkResult: MainViewModel.UpdateResult?,
+    onCheckUpdate: () -> Unit,
     onBack: () -> Unit
 ) {
     var showLegal by remember { mutableStateOf(false) }
@@ -149,6 +155,20 @@ fun SettingsScreen(
                 InfoRow(Icons.Default.Refresh, R.string.settings_refresh_title, R.string.settings_refresh_body)
                 InfoRow(Icons.Default.SwipeLeft, R.string.settings_swipe_title, R.string.settings_swipe_body)
                 InfoRow(Icons.Default.Widgets, R.string.settings_widget_title, R.string.settings_widget_body)
+            }
+
+            Section(stringResource(R.string.settings_section_updates)) {
+                UpdateOption(
+                    enabled = settings.updateCheckEnabled,
+                    onEnabledChange = { v ->
+                        onChange { it.copy(updateCheckEnabled = v) }
+                        if (v) onCheckUpdate()
+                    },
+                    update = update,
+                    checking = checking,
+                    result = checkResult,
+                    onCheck = onCheckUpdate
+                )
             }
 
             Section(stringResource(R.string.settings_section_legal)) {
@@ -335,6 +355,53 @@ private fun LockOption(enabled: Boolean, onEnabledChange: (Boolean) -> Unit) {
                 }
             }
         )
+    }
+}
+
+@Composable
+private fun UpdateOption(
+    enabled: Boolean,
+    onEnabledChange: (Boolean) -> Unit,
+    update: UpdateChecker.Release?,
+    checking: Boolean,
+    result: MainViewModel.UpdateResult?,
+    onCheck: () -> Unit
+) {
+    val context = LocalContext.current
+    Row(horizontalArrangement = Arrangement.spacedBy(Dimens.s4), verticalAlignment = Alignment.CenterVertically) {
+        SettingIcon(Icons.Default.SystemUpdate)
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(Dimens.s1)) {
+            Text(stringResource(R.string.settings_update_title), style = MaterialTheme.typography.titleMedium)
+            Text(
+                stringResource(R.string.settings_update_body),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Switch(checked = enabled, onCheckedChange = onEnabledChange)
+    }
+    if (enabled) {
+        val status = when {
+            checking -> stringResource(R.string.update_checking)
+            update != null -> stringResource(R.string.update_version_available, update.version)
+            result == MainViewModel.UpdateResult.UP_TO_DATE -> stringResource(R.string.update_uptodate)
+            result == MainViewModel.UpdateResult.FAILED -> stringResource(R.string.update_error)
+            else -> null
+        }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(Dimens.s3),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(start = Dimens.icon + Dimens.s4)
+        ) {
+            if (update != null) {
+                Button(onClick = { openUrl(context, update.pageUrl) }) { Text(stringResource(R.string.update_open)) }
+            } else {
+                OutlinedButton(onClick = onCheck, enabled = !checking) { Text(stringResource(R.string.update_check)) }
+            }
+            if (status != null) {
+                Text(status, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
     }
 }
 
